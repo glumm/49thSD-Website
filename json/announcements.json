@@ -1,0 +1,27 @@
+[
+    {
+        "id": "announcement-1",
+        "date": "11 OCT", 
+        "content": "Deadline to sign up for NCL!"
+    },
+    {
+        "id": "announcement-2",
+        "date": "20 SEP", 
+        "content": "No meeting today!"
+    }, 
+    {
+        "id": "announcement-3",
+        "date": "13 SEP", 
+        "content": "Career Fair Today! Get out there and network!"
+    }, 
+    {
+        "id": "announcement-4",
+        "date": "5 SEP", 
+        "content": "No meeting today!"
+    },
+    {
+        "id": "announcement-5",
+        "date": "28 AUG", 
+        "content": "First club meeting of the year!"
+    }
+]
