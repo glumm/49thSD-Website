@@ -1,4 +1,4 @@
-'uses strict' 
+'use strict' 
 
 /**
  * Dark Mode Toggle
@@ -85,3 +85,99 @@ if(title){
   }
 }
 
+/**
+ * End Glitch
+ */
+
+/////////////////////////////////////////////////////////////////////////
+
+/**
+ * API Usage - CTF Challenge Calendar
+ */
+// const limit = 8; 
+// const baseURL = "https://ctftime.org/api/v1/events/?limit=${limit}";
+
+// const ctfs = document.getElementById("ctfs");
+
+// async function getCTFs() {
+//   try {
+//     const response = await fetch(baseURL);
+//     if(!response.ok){
+//       throw Error(`Error: ${response.url} ${response.statusText}`);
+//     }
+//     const data = await response.json();
+//     processResponse(data.response);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// function processResponse(data) {
+//   data.forEach(ctf => {
+//     const ctfDiv = document.createElement("div");
+//     ctfDiv.classList.add("ctf");
+//     ctfDiv.innerHTML = `
+//         <h3>${ctf.title}</h3>
+//         <p>${ctf.description}</p>
+//         <p>${ctf.start}</p>
+//         <p>${ctf.url}</p>
+//     `;
+//     ctfs.appendChild(ctfDiv);
+//   });
+// }
+
+// Constants
+const limit = 8;
+const currentUnix = Math.floor(Date.now() / 1000); // Current Unix epoch time
+const futureUnix = currentUnix + 2 * 7 * 24 * 60 * 60; // 2 weeks ahead
+const baseURL = `https://ctftime.org/api/v1/events/?limit=${limit}`; // Correctly using a template literal
+
+// Container for displaying CTFs
+const ctfs = document.getElementById("ctfs");
+
+// Fetch CTF data
+async function getCTFs() {
+  try {
+    const response = await fetch(baseURL);
+    if (!response.ok) {
+      throw Error(`Error: ${response.url} ${response.statusText}`);
+    }
+    const data = await response.json();
+
+    // Filter based on Unix epoch time
+    const filteredData = data.filter(
+      ctf =>
+        Math.floor(new Date(ctf.start).getTime() / 1000) >= currentUnix &&
+        Math.floor(new Date(ctf.start).getTime() / 1000) <= futureUnix
+    );
+
+    // Process and display the filtered data
+    processResponse(filteredData);
+  } catch (error) {
+    console.log(error);
+    ctfs.innerHTML = "<p>Error fetching CTF data. Please try again later.</p>";
+  }
+}
+
+// Process and display CTFs
+function processResponse(data) {
+  if (data.length === 0) {
+    ctfs.innerHTML = "<p>No CTF events found for the next two weeks.</p>";
+    return;
+  }
+
+  data.forEach(ctf => {
+    const ctfDiv = document.createElement("div");
+    ctfDiv.classList.add("ctf");
+    ctfDiv.innerHTML = `
+        <h3><a href="${ctf.url}" target="_blank">${ctf.title}</a></h3>
+        <p><strong>Description:</strong> ${ctf.description || "N/A"}</p>
+        <p><strong>Start:</strong> ${new Date(ctf.start).toLocaleString()}</p>
+        <p><strong>Link:</strong> <a href="${ctf.url}" target="_blank">${ctf.url}</a></p>
+    `;
+    ctfs.appendChild(ctfDiv);
+  });
+}
+
+// Load CTFs when the script runs
+getCTFs();
