@@ -94,40 +94,9 @@ if(title){
 /**
  * API Usage - CTF Challenge Calendar
  */
-// const limit = 8; 
-// const baseURL = "https://ctftime.org/api/v1/events/?limit=${limit}";
-
-// const ctfs = document.getElementById("ctfs");
-
-// async function getCTFs() {
-//   try {
-//     const response = await fetch(baseURL);
-//     if(!response.ok){
-//       throw Error(`Error: ${response.url} ${response.statusText}`);
-//     }
-//     const data = await response.json();
-//     processResponse(data.response);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// function processResponse(data) {
-//   data.forEach(ctf => {
-//     const ctfDiv = document.createElement("div");
-//     ctfDiv.classList.add("ctf");
-//     ctfDiv.innerHTML = `
-//         <h3>${ctf.title}</h3>
-//         <p>${ctf.description}</p>
-//         <p>${ctf.start}</p>
-//         <p>${ctf.url}</p>
-//     `;
-//     ctfs.appendChild(ctfDiv);
-//   });
-// }
 
 // Constants
-const limit = 3;
+const limit = 5;
 const currentUnix = Math.floor(Date.now() / 1000); 
 const futureUnix = currentUnix + 2 * 7 * 24 * 60 * 60; 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";

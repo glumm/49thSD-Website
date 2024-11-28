@@ -68,7 +68,7 @@ input:checked + label#darkmode-toggler:after{
 
 #backgroundImage {
     position: relative;
-  }
+}
   
 /* #backgroundImage:before {
     content: "";
@@ -408,6 +408,9 @@ label#show-more:hover{
 .CTFs{
     grid-column: span 1; 
     grid-row: span 3;
+    max-height: 850px;
+    overflow: auto;
+    overflow-y: scroll;
 }
 
 .Contact{
