@@ -127,10 +127,11 @@ if(title){
 // }
 
 // Constants
-const limit = 8;
-const currentUnix = Math.floor(Date.now() / 1000); // Current Unix epoch time
-const futureUnix = currentUnix + 2 * 7 * 24 * 60 * 60; // 2 weeks ahead
-const baseURL = `https://ctftime.org/api/v1/events/?limit=${limit}`; // Correctly using a template literal
+const limit = 3;
+const currentUnix = Math.floor(Date.now() / 1000); 
+const futureUnix = currentUnix + 2 * 7 * 24 * 60 * 60; 
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+const baseURL = `${proxyUrl}https://ctftime.org/api/v1/events/?limit=${limit}`; 
 
 // Container for displaying CTFs
 const ctfs = document.getElementById("ctfs");
