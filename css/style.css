@@ -4,7 +4,9 @@
 }
 
 /* html{
-    font-size: 80%;
+    /* font-size: 80%; 
+    transform: scale(0.8);
+   transform-origin: center top;
 } */
 
 body{
@@ -12,7 +14,7 @@ body{
     background-color: #fffaf8;
     line-height: 1.5;
     /* scale: 0.8;
-    transform-origin: top left; */
+    transform-origin: center top; */
 }
 
 .dark-mode{
@@ -224,6 +226,7 @@ main {
     transition: transform 0.3s ease;
     grid-column: span 6;
     grid-row: span 1;
+    max-width: 1140px;
 }
 
 .links{
@@ -409,8 +412,8 @@ label#show-more:hover{
     grid-column: span 1; 
     grid-row: span 3;
     max-height: 850px;
-    overflow: auto;
-    overflow-y: scroll;
+    /* overflow: auto; */
+    overflow-y: auto;
 }
 
 .Contact{

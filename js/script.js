@@ -114,18 +114,17 @@ async function getCTFs() {
     }
     const data = await response.json();
 
-    // Filter based on Unix epoch time
     const filteredData = data.filter(
       ctf =>
         Math.floor(new Date(ctf.start).getTime() / 1000) >= currentUnix &&
         Math.floor(new Date(ctf.start).getTime() / 1000) <= futureUnix
     );
 
-    // Process and display the filtered data
     processResponse(filteredData);
   } catch (error) {
     console.log(error);
-    ctfs.innerHTML = "<p>Error fetching CTF data. Please try again later.</p>";
+    console.log("test"); 
+    ctfs.innerHTML = "<p>Error fetching CTF data. Please try again later. If you haven't already try requesting a demo from the proxy: <a href='https://cors-anywhere.herokuapp.com/corsdemo'>https://cors-anywhere.herokuapp.com/corsdemo</a></p>";
   }
 }
 
@@ -149,5 +148,10 @@ function processResponse(data) {
   });
 }
 
-// Load CTFs when the script runs
-getCTFs();
+if (ctfs) {
+  getCTFs();
+}
+
+/**
+ * End API Usage - CTF Challenge Calendar
+ */
