@@ -95,17 +95,14 @@ if(title){
  * API Usage - CTF Challenge Calendar
  */
 
-// Constants
 const limit = 5;
 const currentUnix = Math.floor(Date.now() / 1000); 
 const futureUnix = currentUnix + 2 * 7 * 24 * 60 * 60; 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const baseURL = `${proxyUrl}https://ctftime.org/api/v1/events/?limit=${limit}`; 
 
-// Container for displaying CTFs
 const ctfs = document.getElementById("ctfs");
 
-// Fetch CTF data
 async function getCTFs() {
   try {
     const response = await fetch(baseURL);
@@ -128,7 +125,6 @@ async function getCTFs() {
   }
 }
 
-// Process and display CTFs
 function processResponse(data) {
   if (data.length === 0) {
     ctfs.innerHTML = "<p>No CTF events found for the next two weeks.</p>";
